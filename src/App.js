@@ -4,11 +4,12 @@ import "./App.css";
 export default function App() {
   const sectionsRef = useRef([]);
 
+  // Smooth scroll
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  /* SCROLL ANIMATION */
+  // Scroll reveal animation
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) =>
@@ -22,18 +23,18 @@ export default function App() {
     return () => observer.disconnect();
   }, []);
 
-  /* TERMINAL TYPING */
+  // Terminal typing effect
   useEffect(() => {
     const text = "Software Developer";
     const el = document.getElementById("typing");
     let i = 0;
-    if (!el) return;
 
+    if (!el) return;
     el.textContent = "";
+
     const interval = setInterval(() => {
-      if (i < text.length) {
-        el.textContent += text.charAt(i++);
-      } else clearInterval(interval);
+      if (i < text.length) el.textContent += text.charAt(i++);
+      else clearInterval(interval);
     }, 80);
 
     return () => clearInterval(interval);
@@ -65,8 +66,10 @@ export default function App() {
         {/* HOME */}
         <section id="home" ref={(e) => (sectionsRef.current[0] = e)} className="section fade">
           <div className="card p-4">
-            <h1>Hi, I'm <span className="text-primary">Iqlaz Ahamed</span></h1>
-            <p className="muted">Full Stack Developer (MERN)</p>
+            <h1 className="fw-bold">
+              Hi, I'm <span className="text-primary">Iqlaz Ahamed</span>
+            </h1>
+            <p className="text-muted">Full Stack Developer (MERN)</p>
           </div>
         </section>
 
@@ -74,7 +77,10 @@ export default function App() {
         <section id="about" ref={(e) => (sectionsRef.current[1] = e)} className="section fade">
           <div className="card p-4">
             <h3>About Me</h3>
-            <p>Motivated MERN Stack developer focused on scalable web apps.</p>
+            <p>
+              Motivated MERN Stack developer focused on building scalable,
+              secure, and user-centric web applications.
+            </p>
           </div>
         </section>
 
@@ -83,18 +89,94 @@ export default function App() {
           <div className="card p-4">
             <h3>Skills</h3>
             <div className="skill-tags">
-              <span>React</span><span>JavaScript</span><span>HTML</span>
-              <span>CSS</span><span>Bootstrap</span><span>Node.js</span>
-              <span>MongoDB</span><span>MySQL</span>
+              <span>React</span>
+              <span>JavaScript</span>
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>Bootstrap</span>
+              <span>Node.js</span>
+              <span>MongoDB</span>
+              <span>MySQL</span>
             </div>
           </div>
         </section>
 
         {/* PROJECTS */}
-        <section id="projects" ref={(e) => (sectionsRef.current[3] = e)} className="section fade">
+        <section
+          id="projects"
+          ref={(e) => (sectionsRef.current[3] = e)}
+          className="section fade"
+        >
           <div className="card p-4">
-            <h3>Projects</h3>
-            <p>Truck Booking System • Hotel Booking System</p>
+            <h3 className="mb-4">Projects</h3>
+
+            <div className="accordion" id="projectsAccordion">
+
+              {/* PROJECT 1 */}
+              <div className="accordion-item">
+                <h2 className="accordion-header" id="projectOne">
+                  <button
+                    className="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#projectOneBody"
+                  >
+                    🚚 Truck Booking System
+                  </button>
+                </h2>
+
+                <div
+                  id="projectOneBody"
+                  className="accordion-collapse collapse"
+                  data-bs-parent="#projectsAccordion"
+                >
+                  <div className="accordion-body">
+                    <p className="text-muted">
+                      <strong>Tech Stack:</strong> HTML, JavaScript, .NET, SQL
+                    </p>
+                    <ul>
+                      <li>Real-time truck booking and scheduling system</li>
+                      <li>Admin dashboard for fleet and trip management</li>
+                      <li>Backend APIs built using .NET</li>
+                      <li>Secure SQL database integration</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* PROJECT 2 */}
+              <div className="accordion-item">
+                <h2 className="accordion-header" id="projectTwo">
+                  <button
+                    className="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#projectTwoBody"
+                  >
+                    🏨 Hotel Room Booking System
+                  </button>
+                </h2>
+
+                <div
+                  id="projectTwoBody"
+                  className="accordion-collapse collapse"
+                  data-bs-parent="#projectsAccordion"
+                >
+                  <div className="accordion-body">
+                    <p className="text-muted">
+                      <strong>Tech Stack:</strong> MERN Stack
+                    </p>
+                    <ul>
+                      <li>User authentication & authorization</li>
+                      <li>Room availability & booking history</li>
+                      <li>REST APIs using Node.js & Express</li>
+                      <li>MongoDB for data storage</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </div>
         </section>
 
@@ -102,8 +184,8 @@ export default function App() {
         <section id="education" ref={(e) => (sectionsRef.current[4] = e)} className="section fade">
           <div className="card p-4">
             <h3>Education</h3>
-            <p>MCA (2024–Present)</p>
-            <p>BCA (2021–2024)</p>
+            <p><strong>MCA</strong> — 2024 (Present)</p>
+            <p><strong>BCA</strong> — 2021–2024</p>
           </div>
         </section>
 
