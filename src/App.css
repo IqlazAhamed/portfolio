@@ -39,10 +39,11 @@
 }
 
 body {
-  background: #000;
+  background: linear-gradient(180deg, #020617, #020617);
   color: #e5e7eb;
   font-family: Inter, sans-serif;
 }
+
 
 .app {
   display: flex;
@@ -89,7 +90,9 @@ body {
 .content {
   margin-left: 64px;
   padding: 30px;
+  background-color: #020617;
 }
+
 
 .terminal {
   background: #020617;
@@ -115,7 +118,7 @@ body {
 .card {
   background: #020617;
   border: 1px solid #1f2937;
-  border-radius: 12px;
+  border-radius: 14px;
   margin-bottom: 60px;
 }
 
